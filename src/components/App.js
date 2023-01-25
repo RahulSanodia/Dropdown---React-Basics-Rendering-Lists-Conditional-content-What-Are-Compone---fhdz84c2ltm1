@@ -167,7 +167,7 @@ function App() {
 						<div className="col-4">
 							<select name="states" id="state" value={state} onChange={(e) => { setState(e.target.value); setCity(0); setLandmark(0) }} className='w-100'>
 								{states.map((item, index) => (<option key={index} id={`state` + (index)}
-									value={index}>{item.name}</option>))}
+									value={index}> {item.name} </option>))}
 							</select>
 						</div>
 					</div>
@@ -188,13 +188,12 @@ function App() {
 							<label>landmark : </label>
 						</div>
 						<div className="col-4">
-							<select name="landmark" id="landmark" className='w-100' value={landmark} onChange={(e) => { setLandmark(e.target.value); }} >
+							<select name="landmark" id="landmark" className='w-100' value={landmark} onChange={(e) => { setLandmark(e.target.value) }} >
 								{states[state].city[city].landmarks.map((item, index) => (<option key={index} id={`landmark` + (index)}
 									value={index}>{item.name}</option>))}
 							</select>
 						</div>
 					</div>
-
 				</div>
 				<div className="col'-6">
 					<div className="row">
