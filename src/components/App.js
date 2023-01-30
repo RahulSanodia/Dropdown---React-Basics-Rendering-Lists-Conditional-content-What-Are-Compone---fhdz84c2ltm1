@@ -136,66 +136,66 @@ const states = [{
 		}]
 	}]
 }];
+
 function Card(props) {
+
 	return (
 		<>
 			<div className="card px-3 py-0 mt-3 w-75">
 				<div className="card-body">
-					<h5 className="card-title" id={props.type + "-title"}>{props.name}</h5>
-					<p className="card-text" id={props.type + "-description"}>{props.description}</p>
+					<h5 className="card-title" id={props.type+"-title"} className="name">{props.name}</h5>
+					<p className="card-text" id={props.type+"-description"}>{props.description}</p>
 				</div>
 			</div>
-
 		</>
 	);
 }
 
 
 function App() {
-	// Do not alter/remove main div
 	const [state, setState] = useState(0);
+
 	const [city, setCity] = useState(0);
+
 	const [landmark, setLandmark] = useState(0);
+
+	// Do not alter/remove main div
 	return (
 		<div id="main">
 			<div className="row">
-				<div className="col-6">
+				<div className='col-6'>
 					<div className="row text-center m-5">
 						<div className="offset-3 col-2">
 							<label>States : </label>
 						</div>
 						<div className="col-4">
-							<select name="states" id="state" value={state} onChange={(e) => { setState(e.target.value); setCity(0); setLandmark(0) }} className='w-100'>
-								{states.map((item, index) => (<option key={index} id={`state` + (index)}
-									value={index}> {item.name} </option>))}
+							<select name="states" id="state" value={state} onChange={(e) => { setState(e.target.value); setCity(0); setLandmark(0) }} className="w-100">
+								{states.map((item, index) => (<option key={index} id={'state' + (index)} value={index}>{item.name}</option>))}
 							</select>
 						</div>
 					</div>
-
 					<div className="row text-center m-5">
-						<div className="offset-3 col-2">
-							<label>Cities : </label>
+						<div className="offset-1 col-2">
+							<label>Citites : </label>
 						</div>
 						<div className="col-4">
-							<select name="City" id="City" className='w-100' value={city} onChange={(e) => { setCity(e.target.value); setLandmark(0) }} >
-								{states[state].city.map((item, index) => (<option key={index} id={`city` + (index)}
-									value={index}>{item.name}</option>))}
+							<select name="city" id="city" className="w-100" value={city} onChange={(e) => { setCity(e.target.value); setLandmark(0) }}>
+								{states[state].city.map((item, index) => (<option id={'city' + (index)} key={index} value={index}>{item.name}</option>))}
 							</select>
 						</div>
 					</div>
 					<div className="row text-center m-5">
 						<div className="offset-3 col-2">
-							<label>landmark : </label>
+							<label>Landamrks : </label>
 						</div>
 						<div className="col-4">
-							<select name="landmark" id="landmark" className='w-100' value={landmark} onChange={(e) => { setLandmark(e.target.value) }} >
-								{states[state].city[city].landmarks.map((item, index) => (<option key={index} id={`landmark` + (index)}
-									value={index}>{item.name}</option>))}
+							<select name="landmark" id="landmark" className="w-100" value={landmark} onChange={(e) => { setLandmark(e.target.value); setLandmark(e.target.value) }}>
+								{states[state].city[city].landmarks.map((item, index) => (<option id={'landmark' + (index)} key={index} value={index}>{item.name}</option>))}
 							</select>
 						</div>
 					</div>
 				</div>
-				<div className="col'-6">
+				<div className="col-6">
 					<div className="row">
 						<Card name={states[state].name} description={states[state].description} type='state' />
 					</div>
@@ -205,12 +205,9 @@ function App() {
 					<div className="row">
 						<Card name={states[state].city[city].landmarks[landmark].name} description={states[state].city[city].landmarks[landmark].description} type='landmark' />
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
 	);
 }
 
